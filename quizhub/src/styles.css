@@ -5,9 +5,41 @@
   src: url(assets/Montserrat-VariableFont_wght.ttf) format("opentype");
 }
 
-body{
-  margin:0px;
+body {
+  margin: 0px;
   font-family: mont;
+  background: rgb(238,174,202);
+  background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+.top-bar{
+  margin: 2%;
+  margin-top: 10px;
+  display: flex;
+  max-height: 70px;
+  font-size: 1.2rem;
+  border-bottom: 1px solid;
+  padding-bottom: 10px;
+  align-items: center;
+  text-align: center;
+}
+.logo-main-link{
+  text-decoration: none;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.user-buttons{
+  right: 5%;
+  position: absolute;
+  padding-left: 20px;
+  border-left: 1px solid darkgray;
+}
+.route-buttons{
+  position: absolute;
+  text-align: right;
+  right: 30%;
 }
 
 .logo-right-part{
@@ -16,8 +48,51 @@ body{
   padding: 5px;
   color: white;
 }
-
 .logo-left-part{
   color: #3AAACF;
   font-size: 1.1em;
+}
+
+.sign-in-button{
+  color: #3AAACF;
+  background-color: #FFA240;
+  padding: 10px 20px 10px 20px;
+  border-radius: 15px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  font-size: .7em;
+}
+.sign-icon{
+  width:10px;
+  margin-left: 10px;
+}
+.sign-in-button:hover{
+  color: #FFA240;
+  background-color: #3AAACF;
+  transition-duration: .1s;
+  text-decoration: none;
+}
+
+.footer{
+  background-color: dimgrey;
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  position: absolute;
+  bottom: 0px;
+}
+#copyright{
+  color: white;
+  position: relative;
+}
+
+button{
+  border: none;
+  background: none;
+  font-size: 1.3rem;
+}
+button:hover{
+  /*border-bottom: #3AAACF solid 1px;*/
+  text-decoration: underline 1.5px #3AAACF;
 }

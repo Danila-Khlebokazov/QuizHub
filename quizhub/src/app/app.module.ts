@@ -7,6 +7,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { QuizListComponent } from './quiz-list/quiz-list.component';
+import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { QuizListComponent } from './quiz-list/quiz-list.component';
     MainPageComponent,
     QuizPageComponent,
     UserPageComponent,
-    QuizListComponent
+    QuizListComponent,
+    SignInPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,32 @@
+.quiz-card{
+  --quiz-size: 200px;
+  width: var(--quiz-size);
+  height: var(--quiz-size);
+  border-radius: 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 10px;
+  background-size: var(--quiz-size);
+  background-position: center center;
+  color: white;
+  overflow: hidden;
+}
+h1{
+  text-shadow:
+    1px 1px 0 black,
+    1px -1px 0 black,
+    -1px 1px 0 black,
+    -1px -1px 0 black;
+}
+
+p{
+}
+.quiz-card:hover{
+  background-size: 120%;
+  transition-duration: .2s;
+}
+
+
+.quiz-list{
+  margin: 0px 30px 10px 30px;
+}

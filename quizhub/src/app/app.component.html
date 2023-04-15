@@ -1,6 +1,18 @@
+<div class="top-bar">
 
+  <a class="logo-main-link" routerLink="/main"><span class="logo-left-part">Quiz</span><span class="logo-right-part">Hub</span></a>
+  <div class="route-buttons">
+    <button routerLink="/quizzes">Quizzes</button>
+    <button>About</button>
+  </div>
 
-<h1><span class="logo-left-part">Quiz</span><span class="logo-right-part">Hub</span></h1>
+  <div class="user-buttons">
+    <button routerLink="/login" class="sign-in-button">Sign In <img class="sign-icon" src="assets/icon.png" ></button>
+  </div>
 
-
+</div>
 <router-outlet></router-outlet>
+<footer class="footer">
+  <a>About</a>
+  <p id="copyright">@ QuizHub all rights reserved 2023</p>
+</footer>

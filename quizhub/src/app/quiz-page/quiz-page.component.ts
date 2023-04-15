@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./quiz-page.component.css']
 })
 export class QuizPageComponent {
-
 }
