@@ -1,1 +1,27 @@
 <p>QUIZ PAGE</p>
+<h1>{{quiz.title}}</h1>
+{{start}}
+
+<button *ngIf="!start" (click)="startQuiz()">Start-></button>
+<button *ngIf="start" (click)="start = false">Break</button>
+
+<div *ngIf="start">
+  {{points}}
+<div *ngIf="!finished" class="question-field">
+  {{quiz.questions[currentQuestion].question}}
+  <div *ngFor="let a of quiz.questions[currentQuestion].answers, let i = index">
+    <div class="answer" (click)="select(i)">
+    {{a.title}} {{a.points}}
+    </div>
+  </div>
+  <h3 *ngIf="error">Please select answer</h3>
+  <button *ngIf="currentQuestion+1 != quiz.questions.length" (click)="next()">Next-></button>
+  <button *ngIf="currentQuestion+1 == quiz.questions.length" (click)="calcResult()">Finish</button>
+
+</div>
+  <div *ngIf="finished" class="result">
+    Your result is {{result.answer}}
+    {{result.description}}
+    {{result.points}}
+  </div>
+</div>

@@ -1,6 +1,7 @@
 <div class="quiz-list">
-  <div routerLink="/1/quizID" style='background-image: url("/assets/tmp_quiz.png")' class="quiz-card" *ngFor="let t of temp">
-    <h1>{{t}}</h1>
-    <p>Some really long description hdwa dhuwagduas dwaduaw ds dwag dsah dua dasgd ad gadiu gw ag di a uahduw hdiuw ad diu wad diuwa </p>
+  <div routerLink="/1/{{q.id}}" style='background-image: url("/assets/tmp_quiz.png")' class="quiz-card" *ngFor="let q of quizzes">
+    <h1>{{q.title}}</h1>
+    <p>{{q.description}} </p>
+    <h2>{{q.rating}}</h2>
   </div>
 </div>

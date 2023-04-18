@@ -8,6 +8,7 @@ import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { QuizListComponent } from './quiz-list/quiz-list.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
+import { QuizGameComponent } from './quiz-game/quiz-game.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
     QuizPageComponent,
     UserPageComponent,
     QuizListComponent,
-    SignInPageComponent
+    SignInPageComponent,
+    QuizGameComponent
   ],
   imports: [
     BrowserModule,
