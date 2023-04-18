@@ -10,7 +10,7 @@
 <div *ngIf="!finished" class="question-field">
   {{quiz.questions[currentQuestion].question}}
   <div *ngFor="let a of quiz.questions[currentQuestion].answers, let i = index">
-    <div class="answer" (click)="select(i)">
+    <div class="answer" [ngClass]="currentAns == i ? 'selected' : ''" (click)="select(i)">
     {{a.title}} {{a.points}}
     </div>
   </div>
