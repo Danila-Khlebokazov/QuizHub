@@ -1,5 +1,6 @@
 <p>QUIZ PAGE</p>
 <h1>{{quiz.title}}</h1>
+<img [src]="quiz.image">
 {{start}}
 
 <button *ngIf="!start" (click)="startQuiz()">Start-></button>
@@ -9,6 +10,7 @@
   {{points}}
 <div *ngIf="!finished" class="question-field">
   {{quiz.questions[currentQuestion].question}}
+  <img [src]="quiz.questions[currentQuestion].image">
   <div *ngFor="let a of quiz.questions[currentQuestion].answers, let i = index">
     <div class="answer" [ngClass]="currentAns == i ? 'selected' : ''" (click)="select(i)">
     {{a.title}} {{a.points}}
@@ -23,5 +25,6 @@
     Your result is {{result.answer}}
     {{result.description}}
     {{result.points}}
+    <img [src]="result.image">
   </div>
 </div>

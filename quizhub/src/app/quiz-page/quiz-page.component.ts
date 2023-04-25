@@ -12,7 +12,7 @@ export class QuizPageComponent implements OnInit{
   points = 0;
   error = false;
   finished = false;
-  result: Field = {answer: "", description: "", points: 0}
+  result: Field = {image: "", answer: "", description: "", points: 0}
 
   currentQuestion = 0;
   currentAns = -1;
@@ -24,7 +24,7 @@ export class QuizPageComponent implements OnInit{
     this.finished = false;
   }
 
-  quiz: Quiz = {description: "", pointsTable: [], questions: [], rating: 0, title: "", id:0}
+  quiz: Quiz = { image: "", description: "", pointsTable: [], questions: [], rating: 0, title: "", id:0}
   constructor(private route: ActivatedRoute) {
   }
   ngOnInit() {

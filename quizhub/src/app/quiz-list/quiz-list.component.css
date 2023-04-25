@@ -11,12 +11,31 @@
   color: white;
   overflow: hidden;
 }
+.star-rating {
+  display: flex;
+  align-items: center;
+  width: 160px;
+  justify-content: space-between;
+  margin:0px auto;
+  position: relative;
+}
 h1{
+  margin-bottom: 5px;
   text-shadow:
     1px 1px 0 black,
     1px -1px 0 black,
     -1px 1px 0 black,
     -1px -1px 0 black;
+}
+.info-part{
+  background-color: black;
+  transform: translateY(-100px);
+  height: 200px;
+  transition-duration: .3s;
+}
+.info-part:hover{
+  background-color: rgba(0, 0, 0, 0.47);
+  transform: translateY(-200px);
 }
 
 p{
@@ -28,5 +47,10 @@ p{
 
 
 .quiz-list{
-  margin: 0px 30px 10px 30px;
+  margin: 0px 30px 100px 30px;
+}
+img{
+  pointer-events: none;
+  z-index: -1;
+  height: inherit;
 }
