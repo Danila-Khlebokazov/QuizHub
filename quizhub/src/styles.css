@@ -43,6 +43,7 @@ body {
   position: absolute;
   text-align: right;
   right: 30%;
+  gap: 50px;
 }
 
 .logo-right-part{
@@ -111,12 +112,14 @@ button{
   border: none;
   background: none;
   font-size: 1.3rem;
+  transition: 0.4s all ease;
+
 }
-button:hover{
+ button:hover{
   transition: 0.4s all ease;
   transform: translateY(-2px);
 }
-button:after{
+.route-buttons button:after{
   content: '';
   position: absolute;
   width: 100%;
@@ -128,7 +131,7 @@ button:after{
   transform-origin: bottom right;
   transition: transform 0.5s ease-out;
 }
-button:hover::after{
+.route-buttons button:hover::after{
   transform: scaleX(1);
   transform-origin: bottom left;
 }
