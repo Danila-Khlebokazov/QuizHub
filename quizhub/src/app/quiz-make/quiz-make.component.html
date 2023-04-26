@@ -1,20 +1,21 @@
-<p>quiz-make works!</p>
 
 <h1>New Quiz Making</h1>
-
-<div class="left-creation-part">
-  <div class="div-input">
-    Name:
-    <input placeholder="New Quiz" id="name-input" type="text">
+<div class="quiz-creation">
+  <div class="left-creation-part">
+    <img [src]="image||'assets/no-image.png'">
+    <div class="div-input">
+      Name:
+      <input [(ngModel)]="quiz_name" placeholder="New Quiz" id="name-input" type="text">
+    </div>
+    <div class="div-input">
+      Description: <input [(ngModel)]="quiz_description" placeholder="new quiz description" id="description-input" type="text">
+    </div>
+    <div>
+      Image:
+      <input accept="image/*" id="image-input" type="file" (change)="onFileSelected($event)">
+    </div>
   </div>
-  <div class="div-input">
-    Description: <input placeholder="new quiz description" id="description-input" type="text">
+  <div class="right-creation-part">
+    Quiz
   </div>
-  <div>
-    Image:
-    <input id="image-input" type="file" (change)="$event" >
-  </div>
-</div>
-<div class="right-creation-part">
-
 </div>

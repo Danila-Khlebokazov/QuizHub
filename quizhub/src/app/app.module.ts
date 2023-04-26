@@ -9,6 +9,8 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { QuizListComponent } from './quiz-list/quiz-list.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { QuizMakeComponent } from './quiz-make/quiz-make.component';
+import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -20,10 +22,12 @@ import { QuizMakeComponent } from './quiz-make/quiz-make.component';
     SignInPageComponent,
     QuizMakeComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+      HttpClientModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
