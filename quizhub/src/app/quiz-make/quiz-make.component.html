@@ -2,7 +2,7 @@
 <h1>New Quiz Making</h1>
 <div class="quiz-creation">
   <div class="left-creation-part">
-    <img [src]="image||'assets/no-image.png'">
+    <img alt="quiz image" [src]="image||'assets/no-image.png'">
     <div class="div-input">
       Name:
       <input [(ngModel)]="quiz_name" placeholder="New Quiz" id="name-input" type="text">
@@ -16,6 +16,43 @@
     </div>
   </div>
   <div class="right-creation-part">
-    Quiz
+    <button id="need_space" (click)="turn_quiz_mode()" class="quiz-change-btn" [ngClass]="quiz_mode ? 'active_mode' : ''">Quiz</button>
+    <button (click)="turn_result_mode()" class="quiz-change-btn" [ngClass]="result_mode ? 'active_mode' : ''">Results</button>
+
+    <div *ngIf="quiz_mode" class="mode quiz_mode">
+      <div class="side-bar">
+        <div class="question-slider">
+            <div (click)="current_question = i" *ngFor="let q of questions,let i = index" class="question-preview"
+            [ngClass]="i == current_question ? 'active_q' : ''">
+              <div (click)="delQuestion(i)" class="del-btn">X</div>
+              <img alt="question-image" [src]="q.image || 'assets/no-image.png'">
+              <p>{{q.question}}</p>
+            </div>
+        </div>
+        <button (click)="addQuestion()" class="add_btn">Add Question <span class="add_btn_ad">+</span></button>
+      </div>
+      <div class="q_customise">
+        <div *ngIf="current_question >= 0 && questions.length > current_question">
+          <img alt="question-image" src="{{questions[current_question].image || 'assets/no-image.png'}}">
+          Add image
+          <input accept="image/*" type="file" (change)="addingImageForQuestion($event)">
+          <input class="question-c-input" type="text" [(ngModel)]="questions[current_question].question">
+          <br>
+          <div class="answer-block" *ngFor="let a of questions[current_question].answers, let i = index">
+            {{a.title}}
+            {{a.points}}
+            <input type="text" class="answer-c-input" [(ngModel)]="questions[current_question].answers[i].title">
+            <input type="number" class="answer-c-input p" [(ngModel)]="questions[current_question].answers[i].points">
+            <span (click)="delAnswer(i)" class="del-btn">Delete</span>
+          </div>
+          <br>
+          <button (click)="addAnswer()" class="add_btn">Add Answer</button>
+        </div>
+        <p *ngIf="current_question < 0 || questions.length < 1">No Questions</p>
+      </div>
+    </div>
+    <div *ngIf="result_mode" class="mode result_mode">
+      Result Mode
+    </div>
   </div>
 </div>

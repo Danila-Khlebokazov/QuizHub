@@ -7,17 +7,17 @@ export interface Field{
   points: number,
   answer: string,
   description: string,
-  image: string
+  image: string | undefined
 }
 
 export interface Question{
-  image: string;
+  image: string | undefined,
   question: string,
   answers: Answer[],
 }
 
 export interface Quiz{
-  image: string;
+  image: string | undefined,
   id: number,
   title: string,
   description: string,
@@ -31,7 +31,7 @@ export interface Quiz{
 
 
 export interface User{
-  image: string;
+  image: string | undefined,
   userId: number,
   userName: string,
 
