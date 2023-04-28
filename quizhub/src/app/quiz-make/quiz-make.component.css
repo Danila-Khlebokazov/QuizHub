@@ -99,7 +99,6 @@ input{
   text-align: center;
 }
 .question-slider{
-  background-color: #35355e;
   height: 90%;
   padding: 5px;
   overflow-y: auto;
@@ -188,4 +187,50 @@ input{
   color: #8a0909;
   cursor: pointer;
   z-index: 1;
+  height: 100%;
+  width: 10%;
+  transition-duration: .3s;
+}
+.del-btn:hover{
+  width: 30%;
+  transition-duration: .3s;
+}
+.result_mode{
+  text-align: center;
+  display: block;
+  overflow-y: auto;
+}
+.styled-table {
+  text-align: center;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  width:100%;
+}
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+  border: 1px solid #009879;
+}
+.styled-table td img{
+  width: 100px;
+}
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
 }

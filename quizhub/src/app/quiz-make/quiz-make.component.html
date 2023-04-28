@@ -24,7 +24,7 @@
         <div class="question-slider">
             <div (click)="current_question = i" *ngFor="let q of questions,let i = index" class="question-preview"
             [ngClass]="i == current_question ? 'active_q' : ''">
-              <div (click)="delQuestion(i)" class="del-btn">X</div>
+              <div (click)="delQuestion(i)" class="del-btn">DEL</div>
               <img alt="question-image" [src]="q.image || 'assets/no-image.png'">
               <p>{{q.question}}</p>
             </div>
@@ -52,7 +52,31 @@
       </div>
     </div>
     <div *ngIf="result_mode" class="mode result_mode">
-      Result Mode
+      <div>
+        <button (click)="addResult()" class="add_btn">Add Result</button>
+        <table class="styled-table">
+          <thead>
+          <tr>
+            <th>Result</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Points to earn</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let r of results, let i = index">
+            <td><input type="text" [(ngModel)]="results[i].answer"></td>
+            <td>
+              <img alt="result-image" src="{{results[i].image || 'assets/no-image.png'}}">
+              <input accept="image/*" type="file" (change)="addingImageForResult($event, i)">
+            </td>
+            <td><input type="text" [(ngModel)]="results[i].description"></td>
+            <td><input type="number" [(ngModel)]="results[i].points"></td>
+            <td style="background-color: #ff5050" (click)="deleteResult(i)">Delete</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
