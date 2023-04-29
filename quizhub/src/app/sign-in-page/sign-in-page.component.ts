@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
 })
 
 export class SignInPageComponent {
+  newUserName: string | undefined;
+  email: string | undefined;
+  password: string | undefined;
+
+
 
 }

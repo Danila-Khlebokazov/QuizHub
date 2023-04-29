@@ -9,7 +9,8 @@
   </div>
 
   <div class="user-buttons">
-    <button routerLink="/login" class="sign-in-button">Sign In <img class="sign-icon" src="assets/icon.png" ></button>
+    <button *ngIf="!islogin" routerLink="/login" class="sign-in-button">Sign In <img class="sign-icon" src="assets/icon.png" ></button>
+    <button *ngIf="islogin" routerLink="/{{user.userId}}" class="sign-in-button">My Account <img class="sign-icon" src="assets/icon.png" ></button>
   </div>
 
 </div>
