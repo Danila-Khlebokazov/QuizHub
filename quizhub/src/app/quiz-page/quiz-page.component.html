@@ -1,30 +1,44 @@
-<p>QUIZ PAGE</p>
-<h1>{{quiz.title}}</h1>
-<img [src]="quiz.image">
-{{start}}
-
-<button *ngIf="!start" (click)="startQuiz()">Start-></button>
-<button *ngIf="start" (click)="start = false">Break</button>
-
-<div *ngIf="start">
-  {{points}}
-<div *ngIf="!finished" class="question-field">
-  {{quiz.questions[currentQuestion].question}}
-  <img [src]="quiz.questions[currentQuestion].image">
-  <div *ngFor="let a of quiz.questions[currentQuestion].answers, let i = index">
-    <div class="answer" [ngClass]="currentAns == i ? 'selected' : ''" (click)="select(i)">
-    {{a.title}} {{a.points}}
+<div class="container">
+  <div class="content">
+    <link rel="stylesheet" type="text/css" href="quiz-page.component.css" />
+    <!-- <h1 *ngIf="!start">{{quiz.title}}</h1> -->
+    <div *ngIf="!start">
+      <img src="{{quiz.image}}">
+      <h2>{{quiz.title}}</h2>
+      <button (click)="startQuiz()">Start</button>
     </div>
-  </div>
-  <h3 *ngIf="error">Please select answer</h3>
-  <button *ngIf="currentQuestion+1 != quiz.questions.length" (click)="next()">Next-></button>
-  <button *ngIf="currentQuestion+1 == quiz.questions.length" (click)="calcResult()">Finish</button>
+    <div *ngIf="start">
 
-</div>
-  <div *ngIf="finished" class="result">
-    Your result is {{result.answer}}
-    {{result.description}}
-    {{result.points}}
-    <img [src]="result.image">
+      <div *ngIf="!finished" class="question-field">
+        <img src="{{quiz.questions[currentQuestion].image}}">
+        <h1>{{quiz.questions[currentQuestion].question}}</h1>
+        <section class="options">
+          <div *ngFor="let a of quiz.questions[currentQuestion].answers, let i = index" class="answer__container">
+            <div class="answer" [ngClass]="currentAns == i ? 'selected' : ''" (click)="select(i)"
+                 [ngClass]="currentAns == i ? 'selected' : ''">
+              {{a.title}}
+            </div>
+          </div>
+        </section>
+
+        <h3 *ngIf="error">Please select answer</h3>
+
+        <button *ngIf="currentQuestion+1 != quiz.questions.length" (click)="next()">Next</button>
+
+
+        <button *ngIf="currentQuestion+1 == quiz.questions.length" (click)="calcResult()">Finish</button>
+        <button class="break-btn" *ngIf="start" (click)="start = false">Break</button>
+
+      </div>
+
+      <div *ngIf="finished" class="result">
+        <img src="{{result.image}}">
+        <br>
+        {{result.answer}}
+        <br>
+        {{result.description}}
+        {{result.points}}
+      </div>
+    </div>
   </div>
 </div>
