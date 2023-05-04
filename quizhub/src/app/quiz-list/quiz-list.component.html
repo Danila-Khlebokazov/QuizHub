@@ -1,5 +1,5 @@
 <div class="quiz-list">
-  <div routerLink="/1/{{q.id}}" class="quiz-card" *ngFor="let q of quizzes">
+  <div routerLink="/quizzes/{{q.id}}" class="quiz-card" *ngFor="let q of quizzes">
     <img [src]="q.image">
     <div class="info-part">
       <h1>{{q.title}}</h1>

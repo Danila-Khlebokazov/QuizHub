@@ -10,7 +10,9 @@ import { QuizListComponent } from './quiz-list/quiz-list.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { QuizMakeComponent } from './quiz-make/quiz-make.component';
 import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { SignUpComponent } from './sign-up/sign-up.component';
+import {AuthInterceptor} from "./AuthInterceptor";
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import {HttpClientModule} from "@angular/common/http";
     UserPageComponent,
     QuizListComponent,
     SignInPageComponent,
-    QuizMakeComponent
+    QuizMakeComponent,
+    SignUpComponent
   ],
     imports: [
         BrowserModule,
@@ -28,7 +31,13 @@ import {HttpClientModule} from "@angular/common/http";
         FormsModule,
       HttpClientModule
     ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

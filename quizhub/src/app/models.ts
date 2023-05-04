@@ -29,14 +29,9 @@ export interface Quiz{
 
 }
 
-
-export interface User{
-  image: string | undefined,
-  userId: number,
-  userName: string,
-
-  quizzes: Quiz[],
-  favourites: Quiz[]
+export interface Token{
+  access: string,
+  refresh: string
 }
 
 

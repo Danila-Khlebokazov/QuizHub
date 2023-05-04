@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Field, Quiz, quizzes} from "../models";
 import {ActivatedRoute} from "@angular/router";
+import {QuizService} from "../quiz.service";
 
 @Component({
   selector: 'app-quiz-page',
@@ -18,20 +19,23 @@ export class QuizPageComponent implements OnInit{
   currentAns = -1;
 
   startQuiz(){
-      this.start = true;
-      this.points = 0;
+    this.start = true;
+    this.points = 0;
     this.error = false;
     this.finished = false;
   }
 
   quiz: Quiz = { image: "", description: "", pointsTable: [], questions: [], rating: 0, title: "", id:0}
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private qService: QuizService) {
   }
   ngOnInit() {
     this.start = false;
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('quizId'));
       this.quiz = quizzes.filter((quiz) => quiz.id == id)[0];
+      this.qService.getQuiz(id).subscribe((quiz) =>{
+        this.quiz = quiz;
+      })
     });
   }
 

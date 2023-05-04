@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {UserService} from '../user.service';
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-sign-in-page',
@@ -7,10 +9,23 @@ import { Component } from '@angular/core';
 })
 
 export class SignInPageComponent {
-  newUserName: string | undefined;
-  email: string | undefined;
-  password: string | undefined;
+  username: string = '';
+  password: string = '';
 
+  constructor(private uService: UserService, private app: AppComponent) {
+  }
 
+  login() {
+    this.uService.login(this.username, this.password).subscribe((data) => {
+      localStorage.setItem('token', data.access);
+      this.app.islogged = true
+      this.username = '';
+      this.password = '';
+    });
+  }
+  logout() {
+    localStorage.removeItem('token');
+    this.app.islogged = false
+  }
 
 }

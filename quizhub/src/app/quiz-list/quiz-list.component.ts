@@ -1,11 +1,26 @@
-import { Component } from '@angular/core';
-import {quizzes} from "../models";
+import {Component, OnInit} from '@angular/core';
+import {QuizService} from "../quiz.service";
+import {Quiz, quizzes} from "../models";
 
 @Component({
   selector: 'app-quiz-list',
   templateUrl: './quiz-list.component.html',
   styleUrls: ['./quiz-list.component.css']
 })
-export class QuizListComponent {
-  quizzes = quizzes
+export class QuizListComponent implements OnInit{
+  quizzes: Quiz[] = []
+  constructor(private qService: QuizService) {
+
+  }
+
+  ngOnInit() {
+    this.getQuizzes()
+  }
+
+  getQuizzes(){
+    this.qService.getQuizzes().subscribe((quizzes) => {
+      this.quizzes = quizzes
+    })
+    console.log(this.quizzes)
+  }
 }

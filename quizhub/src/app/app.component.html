@@ -1,16 +1,18 @@
 <div class="top-bar">
 
   <a class="logo-main-link" routerLink="/main"><span class="logo-left-part">Quiz</span><span class="logo-right-part">Hub</span></a>
-  <div class="route-buttons">
+  <div *ngIf="islogged" class="route-buttons">
     <button routerLink="/quizzes">All Quizzes</button>
     <button routerLink="/quizzes">My Quizzes</button>
-    <button routerLink="/quizzes">Favorites</button>
+<!--    <button routerLink="/quizzes">Favorites</button>-->
     <button routerLink="/making">Create Quiz</button>
   </div>
 
   <div class="user-buttons">
-    <button *ngIf="!islogin" routerLink="/login" class="sign-in-button">Sign In <img class="sign-icon" src="assets/icon.png" ></button>
-    <button *ngIf="islogin" routerLink="/{{user.userId}}" class="sign-in-button">My Account <img class="sign-icon" src="assets/icon.png" ></button>
+    <button *ngIf="!islogged" routerLink="/login" class="sign-in-button">Sign In<img class="sign-icon" src="assets/icon.png" ></button>
+    <div *ngIf="islogged">
+      <button (click)="logout()" class="sign-in-button">Log Out<img class="sign-icon" src="assets/icon.png" ></button>
+    </div>
   </div>
 
 </div>

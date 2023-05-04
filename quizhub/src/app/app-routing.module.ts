@@ -6,14 +6,18 @@ import {QuizPageComponent} from "./quiz-page/quiz-page.component";
 import {SignInPageComponent} from "./sign-in-page/sign-in-page.component";
 import {QuizListComponent} from "./quiz-list/quiz-list.component";
 import {QuizMakeComponent} from "./quiz-make/quiz-make.component";
+import {SignUpComponent} from "./sign-up/sign-up.component";
 
 const routes: Routes = [
   {path: "main", component: MainPageComponent},
   {path: "login", component: SignInPageComponent},
+  {path: "register", component: SignUpComponent},
   {path: "quizzes", component: QuizListComponent},
   {path: "making", component: QuizMakeComponent},
-  {path: ":userId", component: UserPageComponent},
-  {path: ":userId/:quizId", component: QuizPageComponent},
+  {path: "quizzes/:quizId", component: QuizPageComponent},
+  {path: "users/:userId", component: UserPageComponent},
+  {path: ":userId/quizzes", component: QuizListComponent},
+  // {path: ":userId/favorites", component: QuizListComponent},
   {path: '', redirectTo: 'main', pathMatch: 'full'},
 ];
 
