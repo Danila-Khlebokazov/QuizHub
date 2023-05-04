@@ -23,6 +23,10 @@ export class QuizMakeComponent {
 
   results: Field[] = [{answer: "Test result", image: undefined, points: 0, description: "Test"}];
   constructor(private http: HttpClient) {}
+
+  save(){
+
+  }
   turn_quiz_mode(){
     this.quiz_mode = true;
     this.result_mode = false;

@@ -7,7 +7,7 @@ from api.models import Quiz, Question
 from api.serializers import QuizSerializer, QuestionSerializer
 
 @api_view(["GET", "POST"])
-@permission_classes(IsAuthenticated)
+@permission_classes([IsAuthenticated])
 def quiz_list(request):
     if request.method == "GET":
         quizzes = Quiz.objects.all()
@@ -22,7 +22,7 @@ def quiz_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes(IsAuthenticated)
+@permission_classes([IsAuthenticated])
 def quiz_by_id(request, quiz_id):
     try:
         quiz = Quiz.objects.get(id=quiz_id)

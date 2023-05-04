@@ -18,7 +18,8 @@ export class SignInPageComponent {
   login() {
     this.uService.login(this.username, this.password).subscribe((data) => {
       localStorage.setItem('token', data.access);
-      this.app.islogged = true
+      this.app.islogged = true;
+      this.app.getInfo();
       this.username = '';
       this.password = '';
     });

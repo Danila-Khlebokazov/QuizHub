@@ -13,6 +13,7 @@ import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { SignUpComponent } from './sign-up/sign-up.component';
 import {AuthInterceptor} from "./AuthInterceptor";
+import { MyQuizzesPageComponent } from './my-quizzes-page/my-quizzes-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {AuthInterceptor} from "./AuthInterceptor";
     QuizListComponent,
     SignInPageComponent,
     QuizMakeComponent,
-    SignUpComponent
+    SignUpComponent,
+    MyQuizzesPageComponent
   ],
     imports: [
         BrowserModule,

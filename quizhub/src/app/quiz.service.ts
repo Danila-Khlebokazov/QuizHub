@@ -23,9 +23,9 @@ export class QuizService {
     )
   }
 
-  getUserQuizzes():Observable<Quiz[]>{
+  getUserQuizzes(username: string):Observable<Quiz[]>{
     return this.client.get<Quiz[]>(
-      `${this.BASE_URL}/api/quizzes/`
+      `${this.BASE_URL}/api/${username}/quizzes/`
     )
   }
 

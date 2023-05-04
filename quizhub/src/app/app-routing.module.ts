@@ -7,6 +7,7 @@ import {SignInPageComponent} from "./sign-in-page/sign-in-page.component";
 import {QuizListComponent} from "./quiz-list/quiz-list.component";
 import {QuizMakeComponent} from "./quiz-make/quiz-make.component";
 import {SignUpComponent} from "./sign-up/sign-up.component";
+import {MyQuizzesPageComponent} from "./my-quizzes-page/my-quizzes-page.component";
 
 const routes: Routes = [
   {path: "main", component: MainPageComponent},
@@ -16,7 +17,7 @@ const routes: Routes = [
   {path: "making", component: QuizMakeComponent},
   {path: "quizzes/:quizId", component: QuizPageComponent},
   {path: "users/:userId", component: UserPageComponent},
-  {path: ":userId/quizzes", component: QuizListComponent},
+  {path: "users/:userId/quizzes", component: MyQuizzesPageComponent},
   // {path: ":userId/favorites", component: QuizListComponent},
   {path: '', redirectTo: 'main', pathMatch: 'full'},
 ];

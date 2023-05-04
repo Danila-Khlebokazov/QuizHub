@@ -14,7 +14,23 @@ class RegisterView(generics.CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
 
+
 class UserInfoView(APIView):
+    def get(self, request, user):
+        u = User.objects.get(username=user)
+        return Response({
+            "username": u.username,
+            "firstname": u.first_name,
+            "lastname": u.last_name
+        })
+
+class OwnInfoView(APIView):
+    def get(self, request):
+        return Response({
+            "username": self.request.user.username,
+            "first_name": self.request.user.first_name,
+            "last_name": self.request.user.last_name
+        })
 
 
 class OwnQuizzesView(generics.ListCreateAPIView):

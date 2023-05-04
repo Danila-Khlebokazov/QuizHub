@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {Token} from "./models";
+import {Token, User} from "./models";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -15,6 +15,18 @@ export class UserService {
     return this.client.post<Token>(
       `${this.BASE_URL}/api/login/`,
       {username, password}
+    )
+  }
+
+  getUser(username: string): Observable<User>{
+    return this.client.get<User>(
+      `${this.BASE_URL}/api/${username}/`
+    )
+  }
+
+  getSelfInfo(): Observable<User>{
+    return this.client.get<User>(
+      `${this.BASE_URL}/api/me/`
     )
   }
 }
