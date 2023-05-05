@@ -9,6 +9,7 @@ import {QuizMakeComponent} from "./quiz-make/quiz-make.component";
 import {SignUpComponent} from "./sign-up/sign-up.component";
 import {MyQuizzesPageComponent} from "./my-quizzes-page/my-quizzes-page.component";
 
+
 const routes: Routes = [
   {path: "main", component: MainPageComponent},
   {path: "login", component: SignInPageComponent},
