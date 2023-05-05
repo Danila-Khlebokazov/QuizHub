@@ -8,6 +8,8 @@ import {QuizListComponent} from "./quiz-list/quiz-list.component";
 import {QuizMakeComponent} from "./quiz-make/quiz-make.component";
 import {SignUpComponent} from "./sign-up/sign-up.component";
 import {MyQuizzesPageComponent} from "./my-quizzes-page/my-quizzes-page.component";
+import {CustomizeQuizComponent} from "./customize-quiz/customize-quiz.component";
+import {NotFoundComponent} from "./not-found/not-found.component";
 
 const routes: Routes = [
   {path: "main", component: MainPageComponent},
@@ -16,11 +18,12 @@ const routes: Routes = [
   {path: "quizzes", component: QuizListComponent},
   {path: "quizzes/:quizId", component: QuizPageComponent},
   {path: "quizzes/new/making", component: QuizMakeComponent},
-  {path: "quizzes/:quizId/making", component: QuizMakeComponent},
+  {path: "quizzes/:quizId/making", component: CustomizeQuizComponent},
   {path: "users/:userId", component: UserPageComponent},
   {path: "users/:userId/quizzes", component: MyQuizzesPageComponent},
   // {path: ":userId/favorites", component: QuizListComponent},
   {path: '', redirectTo: 'main', pathMatch: 'full'},
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

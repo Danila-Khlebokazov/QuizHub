@@ -1,18 +1,19 @@
 
 <div class="container">
-  <h1>New Quiz Making</h1>
-  <button class="save-btn" (click)="save()">SAVE</button>
+  <button class="delete-btn" (click)="deleteQuiz()">DELETE</button>
+  <h1>Quiz Customising</h1>
+  <button class="save-btn" (click)="saveQuiz()">SAVE</button>
 </div>
 
 <div class="quiz-creation">
   <div class="left-creation-part">
-    <img alt="quiz image" [src]="image||'assets/no-image.png'">
+    <img alt="quiz image" [src]="quiz.image||'assets/no-image.png'">
     <div class="div-input">
       Name:
-      <input [(ngModel)]="quiz_name" placeholder="New Quiz" id="name-input" type="text">
+      <input [(ngModel)]="quiz.title" placeholder="New Quiz" id="name-input" type="text">
     </div>
     <div class="div-input">
-      Description: <input [(ngModel)]="quiz_description" placeholder="new quiz description" id="description-input" type="text">
+      Description: <input [(ngModel)]="quiz.description" placeholder="new quiz description" id="description-input" type="text">
     </div>
     <div>
       Image:
@@ -26,33 +27,33 @@
     <div *ngIf="quiz_mode" class="mode quiz_mode">
       <div class="side-bar">
         <div class="question-slider">
-            <div (click)="current_question = i" *ngFor="let q of questions,let i = index" class="question-preview"
-            [ngClass]="i == current_question ? 'active_q' : ''">
-              <div (click)="delQuestion(i)" class="del-btn">DEL</div>
-              <img alt="question-image" [src]="q.image || 'assets/no-image.png'">
-              <p>{{q.question}}</p>
-            </div>
+          <div (click)="current_question = i" *ngFor="let q of quiz.questions,let i = index" class="question-preview"
+               [ngClass]="i == current_question ? 'active_q' : ''">
+            <div (click)="delQuestion(i)" class="del-btn">DEL</div>
+            <img alt="question-image" [src]="q.image || 'assets/no-image.png'">
+            <p>{{q.question}}</p>
+          </div>
         </div>
         <button (click)="addQuestion()" class="add_btn">Add Question <span class="add_btn_ad">+</span></button>
       </div>
       <div class="q_customise">
-        <div *ngIf="current_question >= 0 && questions.length > current_question">
-          <img alt="question-image" src="{{questions[current_question].image || 'assets/no-image.png'}}">
+        <div *ngIf="current_question >= 0 && quiz.questions.length > current_question">
+          <img alt="question-image" src="{{quiz.questions[current_question].image || 'assets/no-image.png'}}">
           Add image
           <input accept="image/*" type="file" (change)="addingImageForQuestion($event)">
-          <input class="question-c-input" type="text" [(ngModel)]="questions[current_question].question">
+          <input class="question-c-input" type="text" [(ngModel)]="quiz.questions[current_question].question">
           <br>
-          <div class="answer-block" *ngFor="let a of questions[current_question].answers, let i = index">
+          <div class="answer-block" *ngFor="let a of quiz.questions[current_question].answers, let i = index">
             {{a.title}}
             {{a.points}}
-            <input type="text" class="answer-c-input" [(ngModel)]="questions[current_question].answers[i].title">
-            <input type="number" class="answer-c-input p" [(ngModel)]="questions[current_question].answers[i].points">
+            <input type="text" class="answer-c-input" [(ngModel)]="quiz.questions[current_question].answers[i].title">
+            <input type="number" class="answer-c-input p" [(ngModel)]="quiz.questions[current_question].answers[i].points">
             <span (click)="delAnswer(i)" class="del-btn">Delete</span>
           </div>
           <br>
           <button (click)="addAnswer()" class="add_btn">Add Answer</button>
         </div>
-        <p *ngIf="current_question < 0 || questions.length < 1">No Questions</p>
+        <p *ngIf="current_question < 0 || quiz.questions.length < 1">No Questions</p>
       </div>
     </div>
     <div *ngIf="result_mode" class="mode result_mode">
@@ -68,14 +69,14 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let r of results, let i = index">
-            <td><input type="text" [(ngModel)]="results[i].result"></td>
+          <tr *ngFor="let r of quiz.results, let i = index">
+            <td><input type="text" [(ngModel)]="quiz.results[i].result"></td>
             <td>
-              <img alt="result-image" src="{{results[i].image || 'assets/no-image.png'}}">
+              <img alt="result-image" src="{{quiz.results[i].image || 'assets/no-image.png'}}">
               <input accept="image/*" type="file" (change)="addingImageForResult($event, i)">
             </td>
-            <td><input type="text" [(ngModel)]="results[i].description"></td>
-            <td><input type="number" [(ngModel)]="results[i].points"></td>
+            <td><input type="text" [(ngModel)]="quiz.results[i].description"></td>
+            <td><input type="number" [(ngModel)]="quiz.results[i].points"></td>
             <td style="background-color: #ff5050" (click)="deleteResult(i)">Delete</td>
           </tr>
           </tbody>

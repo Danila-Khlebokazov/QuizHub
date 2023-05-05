@@ -7,7 +7,33 @@
 h1 {
   font-size: 3rem;
   margin-right: 50px;
+  margin-left: 50px;
   color: #35355e;
+}
+.delete-btn {
+  background-color: #f89f9f;
+  padding: 15px 30px;
+  border-radius: 50px;
+  color: #35355e;
+  font-size: 2rem;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.delete-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+.delete-btn:focus {
+  outline: none;
+}
+
+.delete-btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
 }
 
 .save-btn {
