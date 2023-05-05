@@ -72,6 +72,8 @@
   font-size: 24px;
   text-align: center;
   color: #444;
+
+  height: 60vh;
 }
 
 .no-quizzes p {

@@ -2,10 +2,9 @@
 .footer {
   background-color: #f6a00d;
   color: #ffffff;
-  padding: 40px 0;
+  padding: 40px;
   position: relative;
   bottom: 0;
-  width: 100%;
   transition: all 0.5s ease-in-out;
 }
 

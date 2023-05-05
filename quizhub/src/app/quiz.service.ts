@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
+import {Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import {Token, Quiz, Question, ResultField} from "./models";
 import {HttpClient} from "@angular/common/http";
-import {error} from "@angular/compiler-cli/src/transformers/util";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
 export class QuizService {
   BASE_URL = 'http://127.0.0.1:8000'
 
-  constructor(private client: HttpClient) { }
+  constructor(private client: HttpClient, private router: Router) { }
 
   getQuizzes(): Observable<Quiz[]>{
     return this.client.get<Quiz[]>(
@@ -21,7 +22,14 @@ export class QuizService {
   getQuiz(id: number): Observable<Quiz>{
     return this.client.get<Quiz>(
       `${this.BASE_URL}/api/quizzes/${id}/`
-    )
+    ).pipe(
+      catchError(error => {
+        if (error.status === 400) {
+          this.router.navigate(["not-found"])
+        }
+        return throwError(error);
+      })
+    );
   }
 
   postQuiz(title:string, description: string, image: string | undefined, questions: Question[], results: ResultField[]):Observable<Quiz>{
