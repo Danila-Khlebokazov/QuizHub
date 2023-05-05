@@ -14,6 +14,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { SignUpComponent } from './sign-up/sign-up.component';
 import {AuthInterceptor} from "./AuthInterceptor";
 import { MyQuizzesPageComponent } from './my-quizzes-page/my-quizzes-page.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { MyQuizzesPageComponent } from './my-quizzes-page/my-quizzes-page.compon
     SignInPageComponent,
     QuizMakeComponent,
     SignUpComponent,
-    MyQuizzesPageComponent
+    MyQuizzesPageComponent,
+    TopBarComponent,
+    FooterComponent
   ],
     imports: [
         BrowserModule,

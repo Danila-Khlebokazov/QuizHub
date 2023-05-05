@@ -18,6 +18,20 @@ export class UserService {
     )
   }
 
+  register(username: string, email:string, password:string,password2:string, first_name:string, last_name: string){
+    return this.client.post(
+      `${this.BASE_URL}/api/register/`,
+      {
+        username,
+        email,
+        first_name,
+        last_name,
+        password,
+        password2,
+      }
+    )
+  }
+
   refresh_token(){
     const refresh = localStorage.getItem("refresh_token")
     return this.client.post<Token>(

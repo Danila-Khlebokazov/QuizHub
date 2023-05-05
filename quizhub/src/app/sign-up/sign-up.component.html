@@ -1,29 +1,30 @@
-
 <div class="container">
-
   <div class="sign-up">
-
-    <h1 class="heading">Welcome to quiz world!</h1>
-
-    <div class="text">
-      <img height="20px" src="assets/icon.png" />
-      <input [(ngModel)]="username" placeholder=" Name" type="text" />
+    <h1 class="heading">Welcome to Quiz World!</h1>
+    <div class="input-container">
+      <label for="username"><img height="20px" src="assets/icon.png" /></label>
+      <input id="username" [(ngModel)]="username" placeholder="Name" type="text" />
     </div>
-    <div class="text">
-      <img height="20px" src="assets/email.png" />
-      <input [(ngModel)]="email" placeholder=" Example@gmail.com" type="email" />
+    <div class="input-container">
+      <label for="email"><img height="20px" src="assets/email.png" /></label>
+      <input id="email" [(ngModel)]="email" placeholder="Email" type="email" />
     </div>
-    <div class="text">
-      <img height="20px" src="assets/pass2.png" />
-      <input [(ngModel)]="password" placeholder=" Password" type="password" />
+    <div class="input-container">
+      <input id="first_name" [(ngModel)]="first_name" placeholder="First Name" type="text" />
     </div>
-    <button routerLink="/main">Create account</button>
-    <p class="conditions">Already have an account <a href="#">Sign in</a></p>
-  </div>
-  <div class="text-container">
-    <h1 style="color: #2d2c2c; font-family: arial; line-height: 50px;">Hello, dear friend</h1>
-    <p>If you want to take interesting quizzes, please register</p>
-
+    <div class="input-container">
+      <input id="last_name" [(ngModel)]="last_name" placeholder="Last Name" type="text" />
+    </div>
+    <div class="input-container">
+      <label for="password"><img height="20px" src="assets/pass2.png" /></label>
+      <input id="password" [(ngModel)]="password" placeholder="Password" type="password" />
+    </div>
+    <div class="input-container">
+      <label for="confirm-password"><img height="20px" src="assets/pass2.png" /></label>
+      <input id="confirm-password" [(ngModel)]="password2" placeholder="Confirm Password" type="password" />
+    </div>
+    {{error_message}}
+    <button class="signup-button" (click)="signup()">Sign Up</button>
+    <p class="conditions">Already have an account? <a href="login/">Log In</a></p>
   </div>
 </div>
-

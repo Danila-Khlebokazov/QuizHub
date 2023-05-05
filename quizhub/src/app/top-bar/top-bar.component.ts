@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from "./user.service";
+import {Component, Input, OnInit} from '@angular/core';
+import {UserService} from "../user.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-top-bar',
+  templateUrl: './top-bar.component.html',
+  styleUrls: ['./top-bar.component.css']
 })
-export class AppComponent implements OnInit{
+export class TopBarComponent implements OnInit{
   title = 'quizhub';
   public islogged: boolean = false;
   constructor(private uService: UserService) {
