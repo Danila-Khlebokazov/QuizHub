@@ -39,7 +39,7 @@ export class AppComponent implements OnInit{
   }
 
   logout() {
-    localStorage.removeItem('token');
+    localStorage.clear();
     this.islogged = false
   }
 }

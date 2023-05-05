@@ -18,6 +18,7 @@ export class SignInPageComponent {
   login() {
     this.uService.login(this.username, this.password).subscribe((data) => {
       localStorage.setItem('token', data.access);
+      localStorage.setItem('refresh_token', data.refresh);
       this.app.islogged = true;
       this.app.getInfo();
       this.username = '';
@@ -25,7 +26,7 @@ export class SignInPageComponent {
     });
   }
   logout() {
-    localStorage.removeItem('token');
+    localStorage.clear()
     this.app.islogged = false
   }
 

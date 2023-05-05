@@ -18,6 +18,21 @@ export class UserService {
     )
   }
 
+  refresh_token(){
+    const refresh = localStorage.getItem("refresh_token")
+    return this.client.post<Token>(
+      `${this.BASE_URL}/api/login/refresh/`,
+      {refresh}
+    ).subscribe((data)=>{
+        localStorage.setItem("token", data.access)
+        console.log(data.access)
+    },
+      (error) => {
+        console.log(error)
+        localStorage.clear();
+      })
+  }
+
   getUser(username: string): Observable<User>{
     return this.client.get<User>(
       `${this.BASE_URL}/api/${username}/`

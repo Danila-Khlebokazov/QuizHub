@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {Token, Quiz} from "./models";
+import {Token, Quiz, Question, ResultField} from "./models";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -20,6 +20,21 @@ export class QuizService {
   getQuiz(id: number): Observable<Quiz>{
     return this.client.get<Quiz>(
       `${this.BASE_URL}/api/quizzes/${id}/`
+    )
+  }
+
+  postQuiz(title:string, description: string, image: string | undefined, questions: Question[], results: ResultField[]):Observable<Quiz>{
+
+    return this.client.post<Quiz>(
+        `${this.BASE_URL}/api/quizzes/`,
+    {
+            title,
+      description,
+      image,
+      questions,
+      results,
+      "rating": 0
+          }
     )
   }
 

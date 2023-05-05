@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Field, Quiz, quizzes} from "../models";
+import {ResultField, Quiz} from "../models";
 import {ActivatedRoute} from "@angular/router";
 import {QuizService} from "../quiz.service";
 
@@ -13,7 +13,7 @@ export class QuizPageComponent implements OnInit{
   points = 0;
   error = false;
   finished = false;
-  result: Field = {image: "", answer: "", description: "", points: 0}
+  result: ResultField = {image: "", result: "", description: "", points: 0}
 
   currentQuestion = 0;
   currentAns = -1;
@@ -25,39 +25,44 @@ export class QuizPageComponent implements OnInit{
     this.finished = false;
   }
 
-  quiz: Quiz = { image: "", description: "", pointsTable: [], questions: [], rating: 0, title: "", id:0}
+  quiz!: Quiz;
   constructor(private route: ActivatedRoute, private qService: QuizService) {
   }
   ngOnInit() {
     this.start = false;
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('quizId'));
-      this.quiz = quizzes.filter((quiz) => quiz.id == id)[0];
       this.qService.getQuiz(id).subscribe((quiz) =>{
         this.quiz = quiz;
+        console.log(quiz)
       })
     });
   }
 
   next() {
-    if (this.quiz.questions.length > this.currentQuestion + 1 && this.currentAns != -1) {
-      this.error = false;
-      this.points += this.quiz.questions[this.currentQuestion].answers[this.currentAns].points;
-      this.currentAns = -1;
-      this.currentQuestion += 1;
-    }
-    else if(this.currentAns == -1){
+    if (this.quiz) {
+      if (this.quiz.questions.length > this.currentQuestion + 1 && this.currentAns != -1) {
+        this.error = false;
+        this.points += this.quiz.questions[this.currentQuestion].answers[this.currentAns].points;
+        this.currentAns = -1;
+        this.currentQuestion += 1;
+      } else if (this.currentAns == -1) {
         this.error = true;
+      }
     }
+    console.log(this.points)
   }
   calcResult(){
-    this.points += this.quiz.questions[this.currentQuestion].answers[this.currentAns].points;
-    this.finished = true;
-    this.quiz.pointsTable.forEach((field) =>{
-      if(field.points <= this.points){
-        this.result = field;
-      }
-    })
+    if(this.quiz) {
+      this.points += this.quiz.questions[this.currentQuestion].answers[this.currentAns].points;
+      this.finished = true;
+      this.quiz.results.forEach((field) => {
+        if (field.points <= this.points) {
+          this.result = field;
+          console.log(this.result)
+        }
+      })
+    }
   }
 
   select(ans: number){

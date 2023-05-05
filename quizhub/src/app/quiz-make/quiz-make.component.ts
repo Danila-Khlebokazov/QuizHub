@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Field, Question} from "../models";
+import {ResultField, Question} from "../models";
 import {Quiz} from "../models";
 import {flush} from "@angular/core/testing";
+import {QuizService} from "../quiz.service";
 
 @Component({
   selector: 'app-quiz-make',
   templateUrl: './quiz-make.component.html',
   styleUrls: ['./quiz-make.component.css']
 })
-export class QuizMakeComponent {
+export class QuizMakeComponent implements OnInit{
   quiz_name: string = "New Quiz";
   quiz_description: string = "new quiz description";
-  image: string | undefined
+  image: string | undefined;
 
   quiz_mode = true;
   result_mode = false;
@@ -21,11 +22,14 @@ export class QuizMakeComponent {
     }]}];
   current_question: number = 0;
 
-  results: Field[] = [{answer: "Test result", image: undefined, points: 0, description: "Test"}];
-  constructor(private http: HttpClient) {}
+  results: ResultField[] = [{result: "Test result", image: undefined, points: 0, description: "Test"}];
+  constructor(private http: HttpClient, private qService: QuizService) {}
+
+  ngOnInit() {
+  }
 
   save(){
-
+    this.qService.postQuiz(this.quiz_name, this.quiz_description,this.image , this.questions, this.results).subscribe();
   }
   turn_quiz_mode(){
     this.quiz_mode = true;
@@ -44,7 +48,7 @@ export class QuizMakeComponent {
     this.questions.splice(id, 1)
   }
   addResult(){
-    this.results.push({answer: "Test result", image: undefined, points: 0, description: "Test"});
+    this.results.push({result: "Test result", image: undefined, points: 0, description: "Test"});
   }
   deleteResult(id:number){
     this.results.splice(id, 1);
@@ -89,14 +93,14 @@ export class QuizMakeComponent {
 
     reader.onload = (event: any) => {
       this.image = event.target.result;
+      console.log(this.image)
     };
 
     reader.onerror = (event: any) => {
       console.log("File could not be read: " + event.target.error.code);
     };
 
-    reader.readAsDataURL(event.target.files[0]);
-
+    reader.readAsDataURL(event.target.files[0])
   }
 
     // if (file) {
