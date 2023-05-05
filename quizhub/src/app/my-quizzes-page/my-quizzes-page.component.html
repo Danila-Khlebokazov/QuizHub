@@ -1,5 +1,5 @@
 
-<div class="no-quizzes">
+<div *ngIf="quizzes.length == 0" class="no-quizzes">
   <p>You have no quizzes!</p>
   <p>How about making a new one?</p>
   <button class="create-button" routerLink="/quizzes/new/making/">Create</button>

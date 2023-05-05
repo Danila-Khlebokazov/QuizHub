@@ -5,6 +5,7 @@
     <div *ngIf="!start">
       <img src="{{quiz.image}}">
       <h2>{{quiz.title}}</h2>
+      <p>{{quiz.description}}</p>
       <button (click)="startQuiz()">Start</button>
     </div>
     <div *ngIf="start">
@@ -34,7 +35,7 @@
       <div *ngIf="finished" class="result">
         <img src="{{result.image}}">
         <br>
-        {{result.result}}
+        <h2>{{result.result}}</h2>
         <br>
         {{result.description}}
       </div>

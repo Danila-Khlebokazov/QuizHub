@@ -13,7 +13,7 @@ export class QuizPageComponent implements OnInit{
   points = 0;
   error = false;
   finished = false;
-  result: ResultField = {image: "", result: "Test", description: "", points: 0}
+  result: ResultField = {image: "", result: "Test", description: "", points: -10000000000}
 
   currentQuestion = 0;
   currentAns = -1;
@@ -58,7 +58,7 @@ export class QuizPageComponent implements OnInit{
       this.finished = true;
       this.quiz.results.forEach((field) => {
         console.log(field.points, this.points)
-        if (field.points < this.points) {
+        if (field.points < this.points && this.result.points < field.points) {
           this.result = field;
         }
       })
