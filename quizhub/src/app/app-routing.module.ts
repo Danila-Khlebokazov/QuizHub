@@ -11,6 +11,7 @@ import {MyQuizzesPageComponent} from "./my-quizzes-page/my-quizzes-page.componen
 import {CustomizeQuizComponent} from "./customize-quiz/customize-quiz.component";
 import {NotFoundComponent} from "./not-found/not-found.component";
 
+
 const routes: Routes = [
   {path: "main", component: MainPageComponent},
   {path: "login", component: SignInPageComponent},
