@@ -6,7 +6,7 @@ import {AppComponent} from "../app.component";
 @Component({
   selector: 'app-my-quizzes-page',
   templateUrl: './my-quizzes-page.component.html',
-  styleUrls: ['../quiz-list/quiz-list.component.css']
+  styleUrls: ['./my-quizzes-page.component.css']
 })
 export class MyQuizzesPageComponent {
   quizzes: Quiz[] = []

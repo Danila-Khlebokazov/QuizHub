@@ -1,14 +1,10 @@
-MY QUIZZES
 <div class="quiz-list">
   <div routerLink="/quizzes/{{q.id}}" class="quiz-card" *ngFor="let q of quizzes">
-    <img [src]="q.image">
+    <img [src]="q.image" alt="Quiz Image">
     <div class="info-part">
       <h1>{{q.title}}</h1>
       <div class="star-rating">
-        <div  *ngFor="let i of [1,2,3,4,5]">
-          <img style="width: 20px;" src="assets/full-star.png" *ngIf="q.rating >= i">
-          <img style="width: 20px;" src="assets/empty-star.png" *ngIf="q.rating < i">
-        </div>
+        <img src="assets/full-star.png" *ngFor="let i of [1,2,3,4,5]; let j=index" [ngClass]="{ 'ml-0': j === 0 }">
       </div>
       <p>{{q.description}} </p>
     </div>

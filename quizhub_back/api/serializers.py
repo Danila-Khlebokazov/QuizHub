@@ -149,6 +149,31 @@ class QuizSerializer(serializers.ModelSerializer):
             ResultField.objects.create(quiz=quiz, **r_data)
         return quiz
 
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get('title', instance.title)
+        instance.description = validated_data.get('description', instance.description)
+        instance.rating = validated_data.get('rating', instance.rating)
+
+        instance.image = validated_data.get('image', instance.image)
+
+        # update questions
+        questions_data = validated_data.get('questions', [])
+        instance.questions.all().delete()
+        for q_data in questions_data:
+            answers_data = q_data.pop('answers')
+            question = Question.objects.create(quiz=instance, **q_data)
+            for a_data in answers_data:
+                Answer.objects.create(question=question, **a_data)
+
+        # update results
+        results_data = validated_data.get('results', [])
+        instance.results.all().delete()
+        for r_data in results_data:
+            instance.results.create(**r_data)
+
+        instance.save()
+        return instance
+
 
 
 
