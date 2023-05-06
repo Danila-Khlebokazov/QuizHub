@@ -33,11 +33,17 @@ def quiz_by_id(request, quiz_id):
         serializer = QuizSerializer(quiz, context={"request": request})
         return Response(serializer.data)
     elif request.method == "PUT":
-        serializer = QuizSerializer(instance=quiz, data=request.data, context={"request": request})
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if request.user == Quiz.objects.get(id=quiz_id).user:
+            serializer = QuizSerializer(instance=quiz, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({"reason": "No permission"}, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == "DELETE":
-        quiz.delete()
-        return Response({'deleted': True})
+        if request.user == Quiz.objects.get(id=quiz_id).user:
+            quiz.delete()
+            return Response({'deleted': True})
+        else:
+            return Response({"reason": "No permission"}, status=status.HTTP_400_BAD_REQUEST)

@@ -165,7 +165,7 @@ class QuizSerializer(serializers.ModelSerializer):
         instance.image = validated_data.get('image', instance.image)
 
         # update questions
-        questions_data = validated_data.get('questions', [])
+        questions_data = validated_data.get('questions', instance.questions)
         instance.questions.all().delete()
         for q_data in questions_data:
             answers_data = q_data.pop('answers')
@@ -174,7 +174,7 @@ class QuizSerializer(serializers.ModelSerializer):
                 Answer.objects.create(question=question, **a_data)
 
         # update results
-        results_data = validated_data.get('results', [])
+        results_data = validated_data.get('results', instance.results)
         instance.results.all().delete()
         for r_data in results_data:
             instance.results.create(**r_data)

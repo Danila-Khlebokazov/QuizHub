@@ -47,8 +47,9 @@ export class QuizService {
     )
   }
 
-  private transformToBase64(url:string|undefined): string | undefined{
-    var image: string | undefined = url;
+  private transformToBase64(url:string): string | undefined{
+    var image: string | undefined;
+    const base64regex = /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
     this.client.get(url ?? "", { responseType: 'blob' }).subscribe((imageBlob: Blob) => {
       // Create a FileReader to read the image as a Base64 string
       const reader = new FileReader();
@@ -58,19 +59,22 @@ export class QuizService {
         image =  reader.result as string;
       };
     });
-    return image;
+    if (base64regex.test(url)){
+      return url;
+    }
+    return undefined;
   }
 
   updateQuiz(quiz: Quiz){
     return this.client.put<Quiz>(
       `${this.BASE_URL}/api/quizzes/${quiz.id}/`,
       {
-        "title": quiz.title,
         "description": quiz.description,
+        "image": this.transformToBase64(quiz.image ?? ""),
         "questions": quiz.questions,
         "rating": quiz.rating,
         "results": quiz.results,
-        "image": this.transformToBase64(quiz.image)
+        "title": quiz.title,
       }
     )
   }
@@ -78,7 +82,12 @@ export class QuizService {
   deleteQuiz(quiz: Quiz){
     return this.client.delete(
       `${this.BASE_URL}/api/quizzes/${quiz.id}/`
-    )
+    ).pipe(catchError(error => {
+      if (error.status === 400) {
+        this.router.navigate(["not-found"])
+      }
+      return throwError(error);
+    }))
   }
 
   getUserQuizzes(username: string):Observable<Quiz[]>{
