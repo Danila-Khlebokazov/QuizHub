@@ -4,6 +4,7 @@ import {ResultField, Question} from "../models";
 import {Quiz} from "../models";
 import {flush} from "@angular/core/testing";
 import {QuizService} from "../quiz.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-quiz-make',
@@ -23,13 +24,18 @@ export class QuizMakeComponent implements OnInit{
   current_question: number = 0;
 
   results: ResultField[] = [{result: "Test result", image: undefined, points: 0, description: "Test"}];
-  constructor(private http: HttpClient, private qService: QuizService) {}
+  constructor(private http: HttpClient, private qService: QuizService, private router: Router) {}
 
   ngOnInit() {
   }
 
   save(){
-    this.qService.postQuiz(this.quiz_name, this.quiz_description,this.image , this.questions, this.results).subscribe();
+    this.qService.postQuiz(this.quiz_name, this.quiz_description,this.image , this.questions, this.results).subscribe(
+      (quiz) => {
+        this.router.navigate([`quizzes/${quiz.id}/making`])
+      }
+    );
+
   }
   turn_quiz_mode(){
     this.quiz_mode = true;

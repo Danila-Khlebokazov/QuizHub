@@ -16,6 +16,8 @@ import {AuthInterceptor} from "./AuthInterceptor";
 import { MyQuizzesPageComponent } from './my-quizzes-page/my-quizzes-page.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { FooterComponent } from './footer/footer.component';
+import { CustomizeQuizComponent } from './customize-quiz/customize-quiz.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { FooterComponent } from './footer/footer.component';
     SignUpComponent,
     MyQuizzesPageComponent,
     TopBarComponent,
-    FooterComponent
+    FooterComponent,
+    CustomizeQuizComponent,
+    NotFoundComponent
   ],
     imports: [
         BrowserModule,

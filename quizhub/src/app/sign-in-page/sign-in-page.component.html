@@ -1,18 +1,45 @@
-<div class="container">
+<div class="header">
 
-  <div class="sign-up">
+  <div>
+    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+         viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
 
-    <h1 class="heading">Welcome back to Quiz World!</h1>
-
-    <div class="input-container">
-      <label for="username"><img height="20px" src="assets/icon.png" /></label>
-      <input id="username" [(ngModel)]="username" placeholder="Name" type="text" />
-    </div>
-    <div class="input-container">
-      <label for="password"><img height="20px" src="assets/pass2.png" /></label>
-      <input id="password" [(ngModel)]="password" placeholder="Password" type="password" />
-    </div>
-    <button class="login-button" (click)="login()" routerLink="/main">Log In</button>
-    <p class="conditions">Don't have an account yet? <a href="register/">Sign Up</a></p>
+        <use xlink:href="#gentle-wave" x="48" y="7" fill="#f5f5f5" />
+      </g>
+    </svg>
   </div>
+
+  <div class="container">
+
+    <div class="sign-up">
+
+      <h1 class="heading">Welcome back to Quiz World!</h1>
+
+      <div class="input-container">
+        <label for="username"><img height="20px" src="assets/icon.png" /></label>
+        <input id="username" [(ngModel)]="username" placeholder="Name" type="text" />
+      </div>
+      <div class="input-container">
+        <label for="password"><img height="20px" src="assets/pass2.png" /></label>
+        <input id="password" [(ngModel)]="password" placeholder="Password" type="password" />
+      </div>
+      <button class="login-button" (click)="login()" routerLink="/main">Log In</button>
+      <p class="conditions">Don't have an account yet? <a href="register/">Sign Up</a></p>
+    </div>
+  </div>
+
 </div>
+
+
+
+
+
+
+

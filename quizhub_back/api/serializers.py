@@ -1,9 +1,11 @@
 from api.models import *
 from rest_framework import serializers
+import base64
 
 from django.contrib.auth.models import User
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import PermissionDenied
 
 class Base64ImageField(serializers.ImageField):
     """
@@ -149,11 +151,17 @@ class QuizSerializer(serializers.ModelSerializer):
             ResultField.objects.create(quiz=quiz, **r_data)
         return quiz
 
+    def perform_update(self, serializer):
+        obj = self.get_object()
+        if self.request.user != obj.created_by:  # Or how ever you validate
+            raise PermissionDenied('User is not allowed to modify listing')
+
+        serializer.save()
+
     def update(self, instance, validated_data):
         instance.title = validated_data.get('title', instance.title)
         instance.description = validated_data.get('description', instance.description)
         instance.rating = validated_data.get('rating', instance.rating)
-
         instance.image = validated_data.get('image', instance.image)
 
         # update questions

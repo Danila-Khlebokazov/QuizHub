@@ -7,14 +7,40 @@
 h1 {
   font-size: 3rem;
   margin-right: 50px;
-  color: rgba(39, 86, 190, 0.99);
+  margin-left: 50px;
+  color: #35355e;
+}
+.delete-btn {
+  background-color: #f89f9f;
+  padding: 15px 30px;
+  border-radius: 50px;
+  color: #35355e;
+  font-size: 2rem;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.delete-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+.delete-btn:focus {
+  outline: none;
+}
+
+.delete-btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
 }
 
 .save-btn {
   background-color: #9ff89f;
   padding: 15px 30px;
   border-radius: 50px;
-  color: rgba(39, 86, 190, 0.99);
+  color: #35355e;
   font-size: 2rem;
   font-weight: bold;
   border: none;
@@ -49,7 +75,7 @@ h1{
   background-color: white;
 }
 .left-creation-part{
-  background-color: rgba(39, 86, 190, 0.99);
+  background-color: #192a56;
   display: inline-block;
   width: 20%;
   padding: 20px;
@@ -112,7 +138,7 @@ input{
 }
 .active_mode{
   transform: translateY(-10px);
-  background-color: rgba(39, 86, 190, 0.99);
+  background-color: #192a56;
   color: #FFA500;
 }
 
@@ -121,7 +147,7 @@ input{
   height: 90%;
   transform: translateY(-40px);
   padding: 10px;
-  border-top: 2px solid rgba(39, 86, 190, 0.99);
+  border-top: 2px solid #192a56;
   transition-duration: .3s;
   display: flex;
 }

@@ -5,6 +5,7 @@
     <div *ngIf="!start">
       <img src="{{quiz.image}}">
       <h2>{{quiz.title}}</h2>
+      <p>{{quiz.description}}</p>
       <button (click)="startQuiz()">Start</button>
     </div>
     <div *ngIf="start">
@@ -22,22 +23,21 @@
         </section>
 
         <h3 *ngIf="error">Please select answer</h3>
+        <button class="break-btn" *ngIf="start" (click)="start = false">Break</button>
 
         <button *ngIf="currentQuestion+1 != quiz.questions.length" (click)="next()">Next</button>
 
 
         <button *ngIf="currentQuestion+1 == quiz.questions.length" (click)="calcResult()">Finish</button>
-        <button class="break-btn" *ngIf="start" (click)="start = false">Break</button>
 
       </div>
 
       <div *ngIf="finished" class="result">
         <img src="{{result.image}}">
         <br>
-        {{result.result}}
+        <h2>{{result.result}}</h2>
         <br>
         {{result.description}}
-        {{result.points}}
       </div>
     </div>
   </div>
